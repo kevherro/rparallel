@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/kevherro/rparallel/workflows/Rust/badge.svg)](https://github.com/kevherro/rparallel/actions)
+[![Build Status](https://github.com/kevherro/rparallel/workflows/CI/badge.svg)](https://github.com/kevherro/rparallel/actions)
 
 # Introduction
 
