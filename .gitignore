@@ -1,0 +1,9 @@
+# Rust generated files
+target/
+
+# Rust tools
+Cargo.lock
+
+# Platform-specific and editor files
+.DS_Store
+.idea/
