@@ -10,6 +10,7 @@
  * Author: Kevin Herro <kvherro@gmail.com>
  */
 
+use chrono::{DateTime, Local};
 use rustyline::error::ReadlineError;
 use rustyline::{DefaultEditor, Result};
 
@@ -17,8 +18,9 @@ fn main() -> Result<()> {
     // Initialize the readline editor.
     let mut rl = DefaultEditor::new()?;
 
-    // Display a welcome message.
-    println!("Entering interactive mode (type \"help\" for commands, \"o\" for options)");
+    // Display the time and a welcome message.
+    print_time();
+    greetings();
 
     loop {
         // Read a line of input from the user.
@@ -48,13 +50,20 @@ fn main() -> Result<()> {
     Ok(())
 }
 
-fn print_current_options() {
-    println!("current options...")
+fn greetings() {
+    println!("Entering interactive mode (type \"help\" for commands, \"o\" for options)");
 }
 
-fn print_help() {
-    println!("help!")
+fn print_time() {
+    let local: DateTime<Local> = Local::now();
+    let tz = Local::now().format("%Z").to_string();
+    let formatted = local.format("%b %e, %Y at %-I:%M%P (%Z)").to_string();
+    println!("{}", formatted.replace("  ", " ").replace("PDT", &tz));
 }
+
+fn print_current_options() {}
+
+fn print_help() {}
 
 fn execute_command(cmd: &str) {
     if cmd.is_empty() {
